@@ -14,6 +14,7 @@ This project was made to showcase the participants’ knowledge 🧠 of the `HTM
 </br>
 ## Resources 💎
 </br>
+
 The project’s Trello board 📋 can be found [here🔗](https://shorturl.at/jmwQU)</br>
 
 The wireframe 🌐 can be located [here🔗](https://shorturl.at/dnpzV)</br>
