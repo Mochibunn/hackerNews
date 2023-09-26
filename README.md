@@ -12,9 +12,8 @@ Welcome to the **Week 5** 🗓️ group project for batch `WD#043` led by [Lilia
 
 This project was made to showcase the participants’ knowledge 🧠 of the `HTML REST API` and the ability to successfully integrate it into a webpage📄
 </br>
-## Resources 💎
 </br>
-
+## Resources 💎
 The project’s Trello board 📋 can be found [here🔗](https://shorturl.at/jmwQU)</br>
 
 The wireframe 🌐 can be located [here🔗](https://shorturl.at/dnpzV)</br>
