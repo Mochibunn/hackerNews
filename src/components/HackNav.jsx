@@ -11,7 +11,7 @@ export default function HackNav() {
 
   const noUserIcon = "https://media.discordapp.net/attachments/199274450011553792/1156984505408700417/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.png"; 
   const emailPlaceholder = "hi@placehold.er";
-  const userIconPlaceholder = "https://cdn.discordapp.com/avatars/221077239884677120/a003530404ca24fd5a2d11fd6e1b3a17.webp?&width=0&height=150";
+  const userIconPlaceholder = "https://avatars.githubusercontent.com/u/103283434?width=0&height=150";
 
 
 
@@ -124,7 +124,7 @@ export default function HackNav() {
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">{signedIn ? `Signed in as:` : `Not signed in`}</p>
+              <p>{signedIn ? `Signed in as:` : `Not signed in`}</p>
               {signedIn && <p className="font-semibold">{emailPlaceholder}</p>}
             </DropdownItem>
             <DropdownItem key="settings">{menuItems[7]}</DropdownItem>
