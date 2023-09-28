@@ -1,30 +1,48 @@
-// import { useState } from 'react'
-import './App.css'
+import { Button } from '@nextui-org/button'
+import { Card, CardBody } from '@nextui-org/card'
+import ProductSize from './components/ProductSize'
+import shoe from './assets/images/shoe.webp'
+import { NextUIProvider } from '@nextui-org/react'
+import HackNav from './components/HackNav'
 
-function App() {
-  // const [count, setCount] = useState(0)
-
+export default function Home() {
   return (
-    <>
-      <h1>Pink Floyd - Wish You Were Here</h1>
-      <div className="card">
-        {/* <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button> */}
-        <p>So, so you think you can tell</p>
-        <p>Heaven from Hell? Blue skies from pain?</p>
-        <p>Can you tell a green field from a cold steel rail?</p>
-        <p>A smile from a veil? Do you think you can tell?</p>
-        <p>Did they get you to trade your heroes for ghosts?</p>
-        <p>Hot ashes for trees? Hot air for a cool breeze?</p>
-        <p>Cold comfort for change? Did you exchange</p>
-        <p>A walk-on part in the war for a lead role in a cage?</p>
+    <NextUIProvider>
+      <HackNav />
+    <section className='py-36'>
+      <div className='container flex items-center justify-center'>
+        <Card className='py-4 lg:w-3/4 xl:w-1/2'>
+          <CardBody className='overflow-visible py-2'>
+            <div className='flex gap-6'>
+              <img alt='Shoe' className='flex-1 object-cover' src={shoe} />
+              <div className='flex-1'>
+                <h2 className='text-lg font-bold uppercase'>
+                  Nike Adapt BB 2.0
+                </h2>
+                <p className='text-sm text-default-500'>
+                  Consistent, customized fit, game-changing.
+                </p>
+
+                <div className='mb-6 mt-2 flex gap-3'>
+                  <span className='font-bold'>$279.79</span>
+                  <span className='text-default-600 line-through'>$350</span>
+                  <span className='text-success'>20% off</span>
+                </div>
+
+                <ProductSize />
+
+                <div className='mt-6 flex gap-6'>
+                  <Button color='primary'>Buy now</Button>
+                  <Button color='primary' variant='bordered' radius='full'>
+                    Add to bag
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </CardBody>
+        </Card>
       </div>
-      <p className="read-the-docs">
-      &quot;Wish You Were Here&quot; - From Wish You Were Here (1975)
-      </p>
-    </>
+    </section>
+    </NextUIProvider>
   )
 }
-
-export default App
