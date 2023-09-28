@@ -5,6 +5,9 @@ import { useState, useEffect } from "react";
 
 export default function HackNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [signedIn, setSignedIn] = useState(
+    () => JSON.parse(localStorage.getItem('isSignedIn'))
+  );
 
   const noUserIcon = "https://media.discordapp.net/attachments/199274450011553792/1156984505408700417/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.png"; 
   const emailPlaceholder = "hi@placehold.er";
@@ -56,18 +59,8 @@ export default function HackNav() {
   };
 
   useEffect(() => {
-    const data = localStorage.getItem('isSignedIn');
-    if (data) {setSignedIn(JSON.parse(data))}
-    console.log(data);
-
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('isSignedIn', JSON.stringify(signedIn))
   }, [signedIn]);
-
-  const [signedIn, setSignedIn] = useState();
-
 
   return (
     <Navbar
