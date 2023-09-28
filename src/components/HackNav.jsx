@@ -5,11 +5,13 @@ import { useState, useEffect } from "react";
 
 export default function HackNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [signedIn, setSignedIn] = useState(false);
+  const [signedIn, setSignedIn] = useState(
+    () => JSON.parse(localStorage.getItem('isSignedIn'))
+  );
 
   const noUserIcon = "https://media.discordapp.net/attachments/199274450011553792/1156984505408700417/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.png"; 
   const emailPlaceholder = "hi@placehold.er";
-  const userIconPlaceholder = "https://i.pravatar.cc/150";
+  const userIconPlaceholder = "https://avatars.githubusercontent.com/u/103283434?width=0&height=150";
 
 
 
@@ -32,7 +34,7 @@ export default function HackNav() {
     "Sign In" //index 11
   ];
 
-  const LinkTemplate = ({i}) => {
+  const LinkTemplate = ({i}) => { //mobile mode links
     return(
         <NavbarMenuItem>
           <Link
@@ -45,6 +47,20 @@ export default function HackNav() {
         </NavbarMenuItem>
       )
     };
+
+  const LinkTemplateBig = ({i}) => {
+    return(
+      <NavbarItem>
+      <Link color="foreground" href="#">
+        {menuItems[i]}
+      </Link>
+    </NavbarItem>
+    )
+  };
+
+  useEffect(() => {
+    localStorage.setItem('isSignedIn', JSON.stringify(signedIn))
+  }, [signedIn]);
 
   return (
     <Navbar
@@ -73,37 +89,18 @@ export default function HackNav() {
             {menuItems[0]}
           </Link>
         </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            {menuItems[1]}
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            {menuItems[2]}
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            {menuItems[3]}
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            {menuItems[4]}
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            {menuItems[5]}
-          </Link>
-        </NavbarItem>
+        <LinkTemplateBig i={1}/>
+        <LinkTemplateBig i={2}/>
+        <LinkTemplateBig i={3}/>
+        <LinkTemplateBig i={4}/>
+        <LinkTemplateBig i={5}/>
+
       </NavbarContent>
 
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
         <Input
           classNames={{
-            base: "max-w-full sm:max-w-[10rem] h-10",
+            base: "max-w-full sm:max-w-[20rem] h-10",
             mainWrapper: "h-full",
             input: "text-small",
             inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
@@ -127,7 +124,7 @@ export default function HackNav() {
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
-              <p className="font-semibold">{signedIn ? `Signed in as:` : `Not signed in`}</p>
+              <p>{signedIn ? `Signed in as:` : `Not signed in`}</p>
               {signedIn && <p className="font-semibold">{emailPlaceholder}</p>}
             </DropdownItem>
             <DropdownItem key="settings">{menuItems[7]}</DropdownItem>
@@ -138,10 +135,20 @@ export default function HackNav() {
         </Dropdown>
       </NavbarContent>
 
-      <NavbarMenu>
-        
+      <NavbarMenu> {/* Mobile layout hamburger menu */}
         <NavbarMenuItem>
-          {signedIn && <p className="text-xs">Signed in as: <b>{emailPlaceholder}</b></p>} {/* Placeholder data */}
+          {signedIn && <>
+            <Avatar
+              isBordered
+              as="button"
+              className="transition-transform mb-1"
+              color="primary"
+              name="Jason Hughes"
+              size="sm"
+              src={userIconPlaceholder} //Placeholder data
+            />
+            <p className="text-xs">Signed in as: <b>{emailPlaceholder}</b></p>
+          </>}
         </NavbarMenuItem>
         
         <NavbarMenuItem>
