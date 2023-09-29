@@ -4,6 +4,7 @@ import ProductSize from './components/ProductSize'
 import shoe from './assets/images/shoe.webp'
 import { NextUIProvider } from '@nextui-org/react'
 import HackNav from './components/HackNav'
+import HackContent from './components/HackContent'
 
 
 
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <NextUIProvider>
       <HackNav />
+      <HackContent />
     <section className='py-36'>
       <div className='container flex items-center justify-center'>
         <Card className='py-4 lg:w-3/4 xl:w-1/2'>
