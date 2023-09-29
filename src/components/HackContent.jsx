@@ -3,11 +3,17 @@ import axios from 'axios';
 import { useEffect, useState } from "react";
 import SearchBar from './Searchbar';
 
-const postDate = new Date();
-postDate.toISOString().split('T')[0]
-// const dateDiff = ;
-console.log(postDate);
 
+
+
+const dateDiff = (date) => { //rewrite to take in months and days please!
+  const currDate = new Date().toString();
+  const currYear = currDate.substring(11, 15);
+  const postYear = date.substring(0, 4);
+  const timeDiff = currYear - postYear;
+
+  return (`${timeDiff} year/s ago`);
+};
 
 const HackContent = () => {
   const [newsContent, setNewsContent] = useState();
@@ -23,7 +29,6 @@ useEffect(() => {
     });
 }, []);
 
-
     return ( 
       newsContent ? newsContent.hits.map((singleHit) => { 
         return (
@@ -36,7 +41,7 @@ useEffect(() => {
           <p>
             <a  target="_blank" rel="noreferrer" href={singleHit.url}>{singleHit.points} points</a> |
             <p> {singleHit.author}</p> |
-            <p> date</p> |
+            <p> {dateDiff(singleHit.created_at)}</p> |
             <p> {singleHit.num_comments} comments</p>
           </p>
         </CardBody>
