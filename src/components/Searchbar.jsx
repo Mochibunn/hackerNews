@@ -9,6 +9,7 @@ export default function Searchbar({ setNewsContent }) {
   };
 
   const handleSearch = async () => {
+    console.log("Searching for:", query);
     try {
       const response = await axios.get(
         `https://hn.algolia.com/api/v1/search?query=${query}`

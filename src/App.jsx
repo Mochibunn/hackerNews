@@ -9,6 +9,7 @@ import { ModalFooter } from '@nextui-org/modal'
 
 export default function App() {
   const [newsContent, setNewsContent] = useState(null); // Initialize newsContent to null
+  const [query, setQuery] = useState('react'); //react will be the default search
   const apiUrl = "https://hn.algolia.com/api/v1/search?query=react";
 
   useEffect(() => {
@@ -25,7 +26,8 @@ export default function App() {
 
   return (
     <div>
-      <HackNav setNewsContent={setNewsContent} /> 
+      <HackNav setQuery={setQuery} /> 
+      <p>Current Search Query: {query}</p>
       <HackContent newsContent={newsContent} /> 
     </div>
   );
