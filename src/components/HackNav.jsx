@@ -1,21 +1,77 @@
-import { Avatar, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Divider, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, Input, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { Avatar, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Divider, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, Input, NavbarMenuToggle, NavbarMenu, Textarea, NavbarMenuItem } from "@nextui-org/react";
 import {AcmeLogo} from "../AcmeLogo.jsx";
 import { SearchIcon } from "../SearchIcon.jsx";
-import React, { useState, useEffect } from "react";
-import Searchbar from "./Searchbar.jsx";
+import { useState, useEffect } from "react";
+import { handleSearch } from "./Searchbar.jsx";
+import { Component } from "react";
+
+class SearchBar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 'Search?'
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value});
+  }
+
+  handleSubmit(event) {
+    handleSearch(this.state.value);
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <form onSubmit={this.handleSubmit}>
+      <Input
+          classNames={{
+            base: "max-w-full sm:max-w-[20rem] h-10",
+            mainWrapper: "h-full",
+            input: "text-small",
+            inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+            minRows: 1,
+            maxRows: 1,
+          }}
+          placeholder="Type to search.."
+          size="sm"
+          startContent={<SearchIcon size={18} onClick={this.handleSubmit}/>}
+          type="search"
+          name="searchBar"
+          onChange={this.handleChange}
+        />
+      </form>
 
 
-export default function HackNav({ setNewsContent }) {
+      // <form onSubmit={this.handleSubmit}>
+      //   <label>
+      //     Essay:
+      //     <textarea value={this.state.value} onChange={this.handleChange} />
+      //   </label>
+      //   <input type="submit" value="Submit" />
+      // </form>
+    );
+  }
+}
+
+export default function HackNav() {
+  const [query, setQuery] = useState("");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [signedIn, setSignedIn] = useState(
     () => JSON.parse(localStorage.getItem('isSignedIn'))
-  );
+    );
 
   const noUserIcon = "https://media.discordapp.net/attachments/199274450011553792/1156984505408700417/de7834s-6515bd40-8b2c-4dc6-a843-5ac1a95a8b55.png"; 
   const emailPlaceholder = "hi@placehold.er";
   const userIconPlaceholder = "https://avatars.githubusercontent.com/u/103283434?width=0&height=150";
 
-  
+
+  // function handleChange ({ target })
+  // {this.setState({[target.name]: target.value})}
 
   const signInClick = () => {
     setSignedIn(!signedIn);
@@ -102,22 +158,28 @@ export default function HackNav({ setNewsContent }) {
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
 
-      <Searchbar setNewsContent={setNewsContent} />
+      {/* <Searchbar setNewsContent={setNewsContent} /> */}
       
       </NavbarContent>
 
-        {/* <Input
-          classNames={{
-            base: "max-w-full sm:max-w-[20rem] h-10",
-            mainWrapper: "h-full",
-            input: "text-small",
-            inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-          }}
-          placeholder="Type to search.."
-          size="sm"
-          startContent={<SearchIcon size={18} />}
-          type="search"
-        /> */}
+    <SearchBar />
+        {/* <form>
+        <Input
+            classNames={{
+              base: "max-w-full sm:max-w-[20rem] h-10",
+              mainWrapper: "h-full",
+              input: "text-small",
+              inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+            }}
+            placeholder="Type to search.."
+            size="sm"
+            startContent={<SearchIcon size={18} onClick={handleChange}/>}
+            type="search"
+            name="searchBar"
+            // value={handleChange}
+            // onChange={this.handleChange}
+          />
+        </form> */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar

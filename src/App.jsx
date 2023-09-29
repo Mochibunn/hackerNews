@@ -4,7 +4,6 @@ import axios from "axios";
 
 import HackNav from './components/HackNav'
 import HackContent from './components/HackContent'
-import { ModalFooter } from '@nextui-org/modal'
 
 
 export default function App() {

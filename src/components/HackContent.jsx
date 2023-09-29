@@ -14,7 +14,20 @@ const dateDiff = (date) => { //rewrite to take in months and days please!
   return (`${timeDiff} year/s ago`);
 };
 
-const HackContent = () => {
+
+export const handleSearch = async (query) => {
+  
+  try {
+    const response = await axios.get(
+      `https://hn.algolia.com/api/v1/search?query=${query}`
+    );
+    (response.data);
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+
+const HackContent = (blippo) => {
   const [newsContent, setNewsContent] = useState();
   const apiUrl = 'https://hn.algolia.com/api/v1/search?query=react';
 
