@@ -5,6 +5,8 @@ import shoe from './assets/images/shoe.webp'
 import { NextUIProvider } from '@nextui-org/react'
 import HackNav from './components/HackNav'
 
+
+
 export default function Home() {
   return (
     <NextUIProvider>
