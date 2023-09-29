@@ -1,4 +1,4 @@
-import { Card, CardBody, CircularProgress } from "@nextui-org/react";
+import { Card, CardBody, CircularProgress, Divider } from "@nextui-org/react";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 
@@ -32,13 +32,14 @@ useEffect(() => {
     return ( 
       newsContent ? newsContent.hits.map((singleHit) => { 
         return (
-          <Card key={singleHit.objectID} className="flex flex-row basis-4/5">
-        <CardBody>
-          <p className="font-bold">
+          <Card key={singleHit.objectID} className="w-4/5 mx-auto mb-1">
+        <CardBody className="">
+          <p className="font-bold text-lg">
           <a  target="_blank" rel="noreferrer" href={singleHit.url}>{singleHit.title}</a>
-            <a className="font-normal" href={singleHit.url}> ({singleHit.url})</a>
+            <a className="font-normal text-xs" href={singleHit.url}> ({singleHit.url})</a>
           </p>
-          <p className="text-xs">
+          <Divider/>
+          <p className="text-sm">
             <a  target="_blank" rel="noreferrer" href={singleHit.url}>{singleHit.points} points</a> |
             <a  target="_blank" rel="noreferrer" href={singleHit.url}> {singleHit.author}</a> |
             <a  target="_blank" rel="noreferrer" href={singleHit.url}> {dateDiff(singleHit.created_at)}</a> |
