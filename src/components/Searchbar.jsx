@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function SearchBar ({ setNewsContent }) {
+function SearchBar({ setNewsContent }) {
   const [query, setQuery] = useState("");
 
   const handleInputChange = (e) => {
@@ -13,14 +13,14 @@ function SearchBar ({ setNewsContent }) {
       const response = await axios.get(
         `https://hn.algolia.com/api/v1/search?query=${query}`
       );
-  setNewsContent(response.data);
+      setNewsContent(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
   return (
-    <div>
+    <form>
       <input
         type="text"
         placeholder="Search Hacker News"
@@ -28,7 +28,7 @@ function SearchBar ({ setNewsContent }) {
         onChange={handleInputChange}
       />
       <button onClick={handleSearch}>Search</button>
-    </div>
+    </form>
   );
 }
 
