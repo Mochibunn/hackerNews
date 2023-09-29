@@ -1,4 +1,4 @@
-import { Avatar, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, Input, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
+import { Avatar, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Divider, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, Input, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
 import {AcmeLogo} from "../AcmeLogo.jsx";
 import { SearchIcon } from "../SearchIcon.jsx";
 import React, { useState, useEffect } from "react";
@@ -105,23 +105,38 @@ export default function HackNav({ setNewsContent }) {
       <Searchbar setNewsContent={setNewsContent} />
       
       </NavbarContent>
-      
-          <Dropdown placement="bottom-end">
+
+        {/* <Input
+          classNames={{
+            base: "max-w-full sm:max-w-[20rem] h-10",
+            mainWrapper: "h-full",
+            input: "text-small",
+            inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
+          }}
+          placeholder="Type to search.."
+          size="sm"
+          startContent={<SearchIcon size={18} />}
+          type="search"
+        /> */}
+        <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar
               isBordered
               as="button"
               className="transition-transform"
               color="primary"
-              name="Jason Hughes"
+              name="Mochibun"
               size="sm"
               src={ signedIn ? userIconPlaceholder : noUserIcon } //Placeholder data
             />
           </DropdownTrigger>
           <DropdownMenu aria-label="Profile Actions" variant="flat">
             <DropdownItem key="profile" className="h-14 gap-2">
+              <>
               <p>{signedIn ? `Signed in as:` : `Not signed in`}</p>
               {signedIn && <p className="font-semibold">{emailPlaceholder}</p>}
+              <Divider className="mt-1"/>
+              </>
             </DropdownItem>
             <DropdownItem key="settings">{menuItems[7]}</DropdownItem>
             <DropdownItem key="team_settings">{menuItems[8]}</DropdownItem>
