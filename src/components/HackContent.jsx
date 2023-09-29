@@ -1,4 +1,4 @@
-import { Card, CardBody } from "@nextui-org/react";
+import { Card, CardBody, CircularProgress } from "@nextui-org/react";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 
@@ -32,21 +32,21 @@ useEffect(() => {
     return ( 
       newsContent ? newsContent.hits.map((singleHit) => { 
         return (
-         <Card key={singleHit.objectID}>
+          <Card key={singleHit.objectID} className="flex flex-row basis-4/5">
         <CardBody>
-          <p>
-            {singleHit.title}
-            <a href={singleHit.url}> ({singleHit.url})</a>
+          <p className="font-bold">
+          <a  target="_blank" rel="noreferrer" href={singleHit.url}>{singleHit.title}</a>
+            <a className="font-normal" href={singleHit.url}> ({singleHit.url})</a>
           </p>
-          <p>
+          <p className="text-xs">
             <a  target="_blank" rel="noreferrer" href={singleHit.url}>{singleHit.points} points</a> |
-            <p> {singleHit.author}</p> |
-            <p> {dateDiff(singleHit.created_at)}</p> |
-            <p> {singleHit.num_comments} comments</p>
+            <a  target="_blank" rel="noreferrer" href={singleHit.url}> {singleHit.author}</a> |
+            <a  target="_blank" rel="noreferrer" href={singleHit.url}> {dateDiff(singleHit.created_at)}</a> |
+            <a  target="_blank" rel="noreferrer" href={singleHit.url}> {singleHit.num_comments} comments</a>
           </p>
         </CardBody>
       </Card> 
-     ) }) : <p>not here yet!</p>
+      ) }) : <CircularProgress label="Loading 🐰⚙️" />
 
   )
 };
