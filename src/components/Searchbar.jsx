@@ -3,7 +3,7 @@ import axios from "axios";
 
 export default function Searchbar({ setNewsContent }) {
   const [query, setQuery] = useState("");
-
+  
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
