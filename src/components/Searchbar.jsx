@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function SearchBar({ setNewsContent }) {
+function Searchbar({ setNewsContent }) {
   const [query, setQuery] = useState("");
 
   const handleInputChange = (e) => {
@@ -32,4 +32,4 @@ function SearchBar({ setNewsContent }) {
   );
 }
 
-export default SearchBar;
+export default Searchbar;

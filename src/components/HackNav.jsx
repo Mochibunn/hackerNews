@@ -2,6 +2,8 @@ import { Avatar, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Dropdown,
 import {AcmeLogo} from "../AcmeLogo.jsx";
 import { SearchIcon } from "../SearchIcon.jsx";
 import { useState, useEffect } from "react";
+import SearchBar from "./Searchbar.jsx";
+
 
 export default function HackNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -98,7 +100,13 @@ export default function HackNav() {
       </NavbarContent>
 
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
-        <Input
+      <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
+
+      <SearchBar setNewsContent={SearchBar} />
+  
+      </NavbarContent>
+
+        {/* <Input
           classNames={{
             base: "max-w-full sm:max-w-[20rem] h-10",
             mainWrapper: "h-full",
@@ -109,7 +117,7 @@ export default function HackNav() {
           size="sm"
           startContent={<SearchIcon size={18} />}
           type="search"
-        />
+        /> */}
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar
