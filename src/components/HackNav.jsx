@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import Searchbar from "./Searchbar.jsx";
 
 
-export default function HackNav({ setNewsContent }) {
+export default function HackNav({ setQuery }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [signedIn, setSignedIn] = useState(
     () => JSON.parse(localStorage.getItem('isSignedIn'))
@@ -102,7 +102,7 @@ export default function HackNav({ setNewsContent }) {
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
 
-      <Searchbar setNewsContent={setNewsContent} />
+      <Searchbar setQuery={setQuery} />
       
       </NavbarContent>
       
