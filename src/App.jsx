@@ -6,6 +6,8 @@ import { NextUIProvider } from '@nextui-org/react'
 import HackNav from './components/HackNav'
 import HackContent from './components/HackContent'
 
+
+
 export default function Home() {
   return (
     <NextUIProvider>

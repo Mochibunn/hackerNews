@@ -1,47 +1,10 @@
 import { Card, CardBody } from "@nextui-org/react";
+import axios from 'axios';
+import { useEffect, useState } from "react";
 
 
 
-const placeholderNews = {
-  id: 1,
-  created_at: "2006-10-09T18:21:51.000Z",
-  author: "Plompy",
-  title: "Y Combinator",
-  url: "http://ycombinator.com",
-  text: "Hello! :)",
-  points: 57,
-  parent_id: null,
-  children: [
-    {
-    id: 15,
-    created_at: "2006-10-09T19:51:01.000Z",
-    author: "sama",
-    text: "&#34;the rising star of venture capital&#34; -unknown VC eating lunch on SHR",
-    points: 5,
-    parent_id: 1,
-    children:
-        [{
-          id: 17,
-          created_at: "2006-10-09T19:52:45.000Z",
-          author: "pg",
-          text: "Is there anywhere to eat on Sandhill Road?",
-          points: 5,
-          parent_id: 15,
-          children: []
-        }
-      ]
-    },
-    {
-      id: 18,
-      created_at: "2006-10-09T19:55:01.000Z",
-      author: "sama",
-      text: "Lorem ipsum dolor sit amet",
-      points: 5,
-      parent_id: 1,
-      children: []
-    }
-  ]
-}
+
 
 const dateDiff = (date) => { //rewrite to take in months and days please!
   const currDate = new Date().toString();
@@ -53,24 +16,42 @@ const dateDiff = (date) => { //rewrite to take in months and days please!
 };
 
 const HackContent = () => {
+  const [newsContent, setNewsContent] = useState();
+  const apiUrl = 'https://hn.algolia.com/api/v1/search?query=react';
 
+useEffect(() => {
+  axios.get(apiUrl)
+    .then((response) => {
+      setNewsContent(response.data)
+    })
+    .catch((error) => {
+    console.log(error)
+    });
+}, []);
 
+    return ( 
+      newsContent ? newsContent.hits.map((singleHit) => { 
+        return (
+         <Card key={singleHit.objectID}>
+        <CardBody>
+          <p>
+            {singleHit.title}
+            <a href={singleHit.url}> ({singleHit.url})</a>
+          </p>
+          <p>
+            <a  target="_blank" rel="noreferrer" href={singleHit.url}>{singleHit.points} points</a> |
+            <p> {singleHit.author}</p> |
+            <p> {dateDiff(singleHit.created_at)}</p> |
+            <p> {singleHit.num_comments} comments</p>
+          </p>
+        </CardBody>
+      </Card> 
+     ) }) : <p>not here yet!</p>
 
-    return (
-  <Card>
-    <CardBody>
-      <p>
-        {placeholderNews.title}
-        <a href={placeholderNews.url}> ({placeholderNews.url})</a>
-      </p>
-      <p>
-        <a href={placeholderNews.url}>{placeholderNews.points} points</a> |
-        <a href={placeholderNews.url}> {placeholderNews.author}</a> |
-        <a href={placeholderNews.url}> {dateDiff(placeholderNews.created_at)}</a> |
-        <a href={placeholderNews.url}> {placeholderNews.children.length} comments</a>
-      </p>
-    </CardBody>
-  </Card>
   )
 };
+
+
+
+
 export default HackContent;
