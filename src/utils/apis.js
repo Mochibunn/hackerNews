@@ -21,3 +21,11 @@ export const getStories = async () => {
     console.log(`Could not get the list of stories but I got this! -> ${error}`);
   }
 };
+
+// export const apiGet = async () => {
+//   const url = await fetch("http://hn.algolia.com/api/v1/search?query=");
+//   const dataFromApi = await url.json();
+//   setData(dataFromApi.hits);
+//   setLoading(false);
+//   console.log(dataFromApi.hits);
+// };
