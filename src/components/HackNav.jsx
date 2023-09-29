@@ -1,11 +1,11 @@
 import { Avatar, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, Input, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
 import {AcmeLogo} from "../AcmeLogo.jsx";
 import { SearchIcon } from "../SearchIcon.jsx";
-import { useState, useEffect } from "react";
-import SearchBar from "./Searchbar.jsx";
+import React, { useState, useEffect } from "react";
+import Searchbar from "./Searchbar.jsx";
+import 
 
-
-export default function HackNav() {
+export default function HackNav({ setNewsContent }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [signedIn, setSignedIn] = useState(
     () => JSON.parse(localStorage.getItem('isSignedIn'))
@@ -103,7 +103,7 @@ export default function HackNav() {
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
 
       <SearchBar setNewsContent={SearchBar} />
-  
+      <Searchbar setNewsContent={setNewsContent} />
       </NavbarContent>
 
         {/* <Input
