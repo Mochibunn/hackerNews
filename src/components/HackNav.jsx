@@ -1,11 +1,11 @@
 import { Avatar, Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Divider, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, Input, NavbarMenuToggle, NavbarMenu, NavbarMenuItem } from "@nextui-org/react";
 import {AcmeLogo} from "../AcmeLogo.jsx";
 import { SearchIcon } from "../SearchIcon.jsx";
-import { useState, useEffect } from "react";
-import SearchBar from "./Searchbar.jsx";
+import React, { useState, useEffect } from "react";
+import Searchbar from "./Searchbar.jsx";
 
 
-export default function HackNav() {
+export default function HackNav({ setNewsContent }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [signedIn, setSignedIn] = useState(
     () => JSON.parse(localStorage.getItem('isSignedIn'))
@@ -15,7 +15,7 @@ export default function HackNav() {
   const emailPlaceholder = "hi@placehold.er";
   const userIconPlaceholder = "https://avatars.githubusercontent.com/u/103283434?width=0&height=150";
 
-
+  
 
   const signInClick = () => {
     setSignedIn(!signedIn);
@@ -102,8 +102,8 @@ export default function HackNav() {
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
 
-      <SearchBar setNewsContent={SearchBar} />
-  
+      <Searchbar setNewsContent={setNewsContent} />
+      
       </NavbarContent>
 
         {/* <Input
@@ -191,21 +191,9 @@ export default function HackNav() {
           </Link>
         </NavbarMenuItem>
 
-        {/* {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color={
-                index === 0 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-              }
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))} */}
+    
       </NavbarMenu>
     </Navbar>
   );
 }
+

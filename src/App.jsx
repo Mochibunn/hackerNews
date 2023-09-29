@@ -1,22 +1,36 @@
-// import { Button } from '@nextui-org/button'
-// import { Card, CardBody } from '@nextui-org/card'
-// import ProductSize from './components/ProductSize'
-// import shoe from './assets/images/shoe.webp'
-// import { NextUIProvider } from '@nextui-org/react'
+
+import { useState, useEffect } from "react";
+import axios from "axios";
+
 import HackNav from './components/HackNav'
 import HackContent from './components/HackContent'
 import { ModalFooter } from '@nextui-org/modal'
 
 
-
 export default function App() {
+  const [newsContent, setNewsContent] = useState(null); // Initialize newsContent to null
+  const apiUrl = "https://hn.algolia.com/api/v1/search?query=react";
+
+  useEffect(() => {
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setNewsContent(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
+
   return (
-    <>
-      <HackNav />
-      <HackContent />
-    </>
-  )
+    <div>
+      <HackNav setNewsContent={setNewsContent} /> 
+      <HackContent newsContent={newsContent} /> 
+    </div>
+  );
 }
+
 
 
 
@@ -54,3 +68,4 @@ export default function App() {
     </Card>
   </div>
 </section> */}
+
