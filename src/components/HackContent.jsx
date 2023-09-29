@@ -32,7 +32,7 @@ useEffect(() => {
     return ( 
       newsContent ? newsContent.hits.map((singleHit) => { 
         return (
-          <Card key={singleHit.objectID} className="w-4/5 mx-auto mb-1">
+          <Card key={singleHit.objectID} className="w-4/5 mx-auto my-2">
         <CardBody className="">
           <p className="font-bold text-lg">
           <a  target="_blank" rel="noreferrer" href={singleHit.url}>{singleHit.title}</a>
@@ -47,7 +47,7 @@ useEffect(() => {
           </p>
         </CardBody>
       </Card> 
-      ) }) : <CircularProgress label="Loading 🐰⚙️" />
+      ) }) : <CircularProgress label="Loading 🐰⚙️" className="mx-auto mt-2" />
 
   )
 };
