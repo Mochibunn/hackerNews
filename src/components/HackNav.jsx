@@ -3,7 +3,7 @@ import {AcmeLogo} from "../AcmeLogo.jsx";
 import { SearchIcon } from "../SearchIcon.jsx";
 import React, { useState, useEffect } from "react";
 import Searchbar from "./Searchbar.jsx";
-import 
+
 
 export default function HackNav({ setNewsContent }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ export default function HackNav({ setNewsContent }) {
   const emailPlaceholder = "hi@placehold.er";
   const userIconPlaceholder = "https://avatars.githubusercontent.com/u/103283434?width=0&height=150";
 
-
+  
 
   const signInClick = () => {
     setSignedIn(!signedIn);
@@ -102,23 +102,11 @@ export default function HackNav({ setNewsContent }) {
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
       <NavbarContent as="div" className="hidden sm:flex items-center" justify="end">
 
-      <SearchBar setNewsContent={SearchBar} />
       <Searchbar setNewsContent={setNewsContent} />
+      
       </NavbarContent>
-
-        {/* <Input
-          classNames={{
-            base: "max-w-full sm:max-w-[20rem] h-10",
-            mainWrapper: "h-full",
-            input: "text-small",
-            inputWrapper: "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-          }}
-          placeholder="Type to search..."
-          size="sm"
-          startContent={<SearchIcon size={18} />}
-          type="search"
-        /> */}
-        <Dropdown placement="bottom-end">
+      
+          <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar
               isBordered
@@ -188,21 +176,9 @@ export default function HackNav({ setNewsContent }) {
           </Link>
         </NavbarMenuItem>
 
-        {/* {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              color={
-                index === 0 ? "primary" : index === menuItems.length - 1 ? "danger" : "foreground"
-              }
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))} */}
+    
       </NavbarMenu>
     </Navbar>
   );
 }
+

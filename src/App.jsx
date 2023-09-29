@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import HackNav from './components/HackNav'
 import HackContent from './components/HackContent'
@@ -21,11 +21,11 @@ export default function App() {
 
   return (
     <div>
-      <HackNav setNewsContent={setNewsContent} /> {/* Pass setNewsContent */}
-      <HackContent newsContent={newsContent} /> {/* Pass newsContent */}
+      <HackNav setNewsContent={setNewsContent} /> 
+      <HackContent newsContent={newsContent} /> 
     </div>
   );
-}gi
+}
 
 
 
