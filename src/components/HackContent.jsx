@@ -1,9 +1,6 @@
 import { Card, CardBody } from "@nextui-org/react";
 
-const postDate = new Date();
-postDate.toISOString().split('T')[0]
-// const dateDiff = ;
-console.log(postDate);
+
 
 const placeholderNews = {
   id: 1,
@@ -46,9 +43,18 @@ const placeholderNews = {
   ]
 }
 
+const dateDiff = (date) => { //rewrite to take in months and days please!
+  const currDate = new Date().toString();
+  const currYear = currDate.substring(11, 15);
+  const postYear = date.substring(0, 4);
+  const timeDiff = currYear - postYear;
+
+  return (`${timeDiff} year/s ago`);
+};
+
 const HackContent = () => {
 
-  console.log(placeholderNews.title);
+
 
     return (
   <Card>
@@ -58,10 +64,10 @@ const HackContent = () => {
         <a href={placeholderNews.url}> ({placeholderNews.url})</a>
       </p>
       <p>
-        <a href="{placeholderNews.url}">{placeholderNews.points} points</a> |
-        <a href="#"> {placeholderNews.author}</a> |
-        <a href="#"> date</a> |
-        <a href="#"> {placeholderNews.children.length} comments</a>
+        <a href={placeholderNews.url}>{placeholderNews.points} points</a> |
+        <a href={placeholderNews.url}> {placeholderNews.author}</a> |
+        <a href={placeholderNews.url}> {dateDiff(placeholderNews.created_at)}</a> |
+        <a href={placeholderNews.url}> {placeholderNews.children.length} comments</a>
       </p>
     </CardBody>
   </Card>
