@@ -1,7 +1,7 @@
 import { Card, CardBody } from "@nextui-org/react";
 import axios from 'axios';
 import { useEffect, useState } from "react";
-
+import SearchBar from './Searchbar';
 
 const postDate = new Date();
 postDate.toISOString().split('T')[0]
